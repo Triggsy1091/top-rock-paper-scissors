@@ -2,6 +2,7 @@
 const choices = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
+    
     const randomIndex = Math.floor(Math.random() * choices.length);
     const choice = choices[randomIndex];
     return choice;
@@ -52,6 +53,12 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    var playerSelection = prompt('Please choose either rock, paper, or scissors.');
+    var computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+}
+
+for (let i = 0; i < 5; i++) {
+    game();
+}
