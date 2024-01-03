@@ -1,5 +1,7 @@
 // A rock, paper, scissors game made in Javascript Console
 const choices = ['rock', 'paper', 'scissors'];
+var playerWinCount = 0;
+var computerWinCount = 0;
 
 function getComputerChoice() {
     
@@ -59,6 +61,23 @@ function game() {
     console.log(playRound(playerSelection, computerSelection));
 }
 
-for (let i = 0; i < 5; i++) {
-    game();
-}
+const rockButton = document.querySelector('.rock-btn');
+console.log(rockButton);
+
+rockButton.addEventListener('click', () => {
+    console.log(playRound('rock', getComputerChoice()));
+});
+
+const paperButton = document.querySelector('.paper-btn');
+console.log(paperButton);
+
+paperButton.addEventListener('click', () => {
+    console.log(playRound('paper', getComputerChoice()));
+});
+
+const scissorsButton = document.querySelector('.scissors-btn');
+console.log(scissorsButton);
+
+scissorsButton.addEventListener('click', () => {
+    console.log(playRound('scissors', getComputerChoice()));
+});
