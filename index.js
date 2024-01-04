@@ -79,7 +79,17 @@ function updateScore(result) {
   appendResult(result);
 }
 
-const maxResults = 10;
+let maxResults = calculateMaxResults();
+
+function calculateMaxResults() {
+  const threshold = 600;
+
+  return window.innerWidth < threshold ? 5 : 10;
+}
+
+window.addEventListener("resize", () => {
+  maxResults = calculateMaxResults();
+});
 
 function appendResult(result) {
   const newResult = document.createElement("p");

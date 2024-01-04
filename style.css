@@ -37,6 +37,7 @@ h1 {
   color: #f9f6ee;
   border-radius: 25px;
   transition: background-color 0.3s ease;
+  margin-block: .5rem;
 }
 
 .btn:hover {
@@ -70,6 +71,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .computer-results {
