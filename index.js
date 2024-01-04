@@ -1,4 +1,4 @@
-// A rock, paper, scissors game made in Javascript Console
+// A rock, paper, scissors game
 const choices = ["rock", "paper", "scissors"];
 var playerWinCount = 0;
 var computerWinCount = 0;
@@ -60,27 +60,68 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-var playerSelection = "";
-var computerSelection = "";
+const domPlayerWins = document.querySelector("#playerWinCount");
+const domComputerWins = document.querySelector("#computerWinCount");
+const outcome = document.querySelector("#outcome");
+
+function updateScore(result) {
+  if (result.includes("You Win!")) {
+    playerWinCount++;
+  } else if (result.includes("You Lose!")) {
+    computerWinCount++;
+  }
+
+  domPlayerWins.textContent = playerWinCount;
+
+  domComputerWins.textContent = computerWinCount;
+
+  outcome.textContent = result;
+}
+
+let playerSelection = "";
 
 function game() {
-  while (playerWinCount !== 5 || computerWinCount !== 5) {
-    const rockButton = document.querySelector(".rock-btn");
-    rockButton.addEventListener("click", () => {
-      playerSelection = "rock";
-      console.log(playRound(playerSelection, getComputerChoice()));
-    });
+  const rockButton = document.querySelector(".rock-btn");
+  const paperButton = document.querySelector(".paper-btn");
+  const scissorsButton = document.querySelector(".scissors-btn");
 
-    const paperButton = document.querySelector(".paper-btn");
-    paperButton.addEventListener("click", () => {
-      playerSelection = "paper";
-      console.log(playRound(playerSelection, getComputerChoice()));
-    });
+  function resetGame() {
+    playerSelection = "";
+    playerWinCount = 0;
+    computerWinCount = 0;
 
-    const scissorsButton = document.querySelector(".scissors-btn");
-    scissorsButton.addEventListener("click", () => {
-      playerSelection = "scissors";
-      console.log(playRound(playerSelection, getComputerChoice()));
-    });
+    domPlayerWins.textContent = playerWinCount;
+
+    domComputerWins.textContent = computerWinCount;
   }
-};
+
+  function playGameRound() {
+    playerSelection = this.getAttribute("data-choice");
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+
+    updateScore(result);
+
+    console.log(result);
+    console.log("Player Wins: " + playerWinCount);
+    console.log("Computer Wins: " + computerWinCount);
+
+    if (playerWinCount === 5 || computerWinCount === 5) {
+      console.log("Game Over!");
+      
+      if (playerWinCount > computerWinCount) {
+        outcome.textContent = 'Congratulations, You Won!';
+      } else if (computerWinCount > playerWinCount) {
+        outcome.textContent = 'You Lose!';
+      }
+
+      resetGame();
+    }
+  }
+
+  rockButton.addEventListener("click", playGameRound);
+  paperButton.addEventListener("click", playGameRound);
+  scissorsButton.addEventListener("click", playGameRound);
+}
+
+game();
