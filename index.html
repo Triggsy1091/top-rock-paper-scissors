@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Rock, Paper, Scissors</title>
   </head>
@@ -12,12 +11,10 @@
       <h1>ROCK, PAPER, SCISSORS!</h1>
     </header>
     <main>
-      <div class="container flex-center">
+      <div class="container">
         <button class="btn rock-btn" data-choice="rock">Rock</button>
         <button class="btn paper-btn" data-choice="paper">Paper</button>
         <button class="btn scissors-btn" data-choice="scissors">Scissors</button>
-      </div>
-      <div class="results-history">
       </div>
       <div class="results">
         <div class="player-results">
@@ -35,6 +32,13 @@
           </div>
         </div>
       </div>
+      <div class="wrapper">
+        <div class="results-history">
+        </div>
+      </div>
+      <div class="container" id="reset-button-wrapper">
+      </div>
     </main>
+    <script src="index.js" defer></script>
   </body>
 </html>

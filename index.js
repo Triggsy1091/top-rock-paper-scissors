@@ -62,7 +62,8 @@ function playRound(playerSelection, computerSelection) {
 
 const domPlayerWins = document.querySelector("#playerWinCount");
 const domComputerWins = document.querySelector("#computerWinCount");
-const resultsHistory = document.querySelector('.results-history');
+const resultsHistory = document.querySelector(".results-history");
+const resetButtonWrapper = document.querySelector("#reset-button-wrapper");
 
 function updateScore(result) {
   if (result.includes("You Win!")) {
@@ -78,12 +79,18 @@ function updateScore(result) {
   appendResult(result);
 }
 
+const maxResults = 10;
+
 function appendResult(result) {
-  const newResult = document.createElement('p');
-  newResult.classList.add('outcome');
+  const newResult = document.createElement("p");
+  newResult.classList.add("outcome");
   newResult.textContent = result;
   resultsHistory.appendChild(newResult);
-};
+
+  while (resultsHistory.children.length > maxResults) {
+    resultsHistory.removeChild(resultsHistory.children[0]);
+  }
+}
 
 let playerSelection = "";
 
@@ -93,13 +100,27 @@ function game() {
   const scissorsButton = document.querySelector(".scissors-btn");
 
   function resetGame() {
-    playerSelection = "";
-    playerWinCount = 0;
-    computerWinCount = 0;
+    console.log("HERE");
+    const resetButton = document.createElement("button");
+    resetButton.classList.add("btn");
+    resetButton.textContent = "Restart";
 
-    domPlayerWins.textContent = playerWinCount;
+    resetButtonWrapper.appendChild(resetButton);
+    resetButton.addEventListener("click", () => {
+      playerSelection = "";
+      playerWinCount = 0;
+      computerWinCount = 0;
 
-    domComputerWins.textContent = computerWinCount;
+      domPlayerWins.textContent = playerWinCount;
+
+      domComputerWins.textContent = computerWinCount;
+
+      while (resultsHistory.lastElementChild) {
+        resultsHistory.removeChild(resultsHistory.lastElementChild);
+      }
+
+      resetButtonWrapper.removeChild(resetButton);
+    });
   }
 
   function playGameRound() {
@@ -115,7 +136,7 @@ function game() {
 
     if (playerWinCount === 5 || computerWinCount === 5) {
       console.log("Game Over!");
-      
+
       if (playerWinCount > computerWinCount) {
         appendResult("Congratulations, You Won!");
       } else if (computerWinCount > playerWinCount) {
