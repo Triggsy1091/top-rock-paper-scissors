@@ -62,7 +62,7 @@ function playRound(playerSelection, computerSelection) {
 
 const domPlayerWins = document.querySelector("#playerWinCount");
 const domComputerWins = document.querySelector("#computerWinCount");
-const outcome = document.querySelector("#outcome");
+const resultsHistory = document.querySelector('.results-history');
 
 function updateScore(result) {
   if (result.includes("You Win!")) {
@@ -75,8 +75,15 @@ function updateScore(result) {
 
   domComputerWins.textContent = computerWinCount;
 
-  outcome.textContent = result;
+  appendResult(result);
 }
+
+function appendResult(result) {
+  const newResult = document.createElement('p');
+  newResult.classList.add('outcome');
+  newResult.textContent = result;
+  resultsHistory.appendChild(newResult);
+};
 
 let playerSelection = "";
 
@@ -110,9 +117,9 @@ function game() {
       console.log("Game Over!");
       
       if (playerWinCount > computerWinCount) {
-        outcome.textContent = 'Congratulations, You Won!';
+        appendResult("Congratulations, You Won!");
       } else if (computerWinCount > playerWinCount) {
-        outcome.textContent = 'You Lose!';
+        appendResult("Game Over, You Lost!");
       }
 
       resetGame();

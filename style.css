@@ -1,7 +1,60 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: space-around;
+}
+
+body {
+  background-color: #14110f;
+  color: #f9f6ee;
+}
+
+h1 {
+  padding: 1.5rem;
+}
+
+.btn {
+  height: 10rem;
+  aspect-ratio: 1/1;
+  margin-inline: 2rem;
+  background-color: #34312d;
+  border: none;
+  color: #f9f6ee;
+  border-radius: 25px;
+}
+
+.btn:hover {
+  background-color: #837d74;
+}
+
+.results-history {
+  width: 60ch;
+  aspect-ratio: 1/1;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #86bbd8;
+  color: #14110f;
+  border-radius: 25px;
+  overflow-y: scroll;
+}
+
+.results-history::-webkit-scrollbar {
+    display: none;
+}
+
+.outcome {
+  text-align: center;
+}
+
+.results {
+  display: flex;
+  justify-content: space-around;
+  margin-block: 2rem;
 }
