@@ -61,7 +61,7 @@ h1 {
 
 .results {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-block: 2rem;
   align-items: center;
   text-align: center;
@@ -69,13 +69,10 @@ h1 {
 
 .container {
   display: flex;
+  flex: auto;
   justify-content: center;
   margin-top: 1.5rem;
   flex-wrap: wrap;
-}
-
-.computer-results {
-  margin-left: 0;
 }
 
 .wrapper {
@@ -87,6 +84,8 @@ h1 {
 .player-results,
 .computer-results {
   margin: 0 1rem; /* Adjust as needed */
+  margin-right: 2rem;
+  width: 9ch;
 }
 
 #reset-button-wrapper {
@@ -95,7 +94,23 @@ h1 {
     justify-content: center;
   }
 
-#reset-button-wrapper button {
-    background-color: #837d74;
-    padding: 0.5rem 1rem;
+.reset-button {
+  border-radius: 5px;
+  height: 3rem;
+  width: 20ch;
+  background-color: #CEC3C1;
+  color: #14110f;
+  border: solid #837d74 5px;
+}
+
+button {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .btn {
+    transform: scale(0.5);
+    margin: 0;
   }
+}

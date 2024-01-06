@@ -64,6 +64,11 @@ const domPlayerWins = document.querySelector("#playerWinCount");
 const domComputerWins = document.querySelector("#computerWinCount");
 const resultsHistory = document.querySelector(".results-history");
 const resetButtonWrapper = document.querySelector("#reset-button-wrapper");
+const buttonChoiceContainer = document.querySelector(".container");
+
+
+const buttons = buttonChoiceContainer.querySelectorAll(".btn");
+
 
 function updateScore(result) {
   if (result.includes("You Win!")) {
@@ -112,14 +117,24 @@ function game() {
   function resetGame() {
     console.log("HERE");
     const resetButton = document.createElement("button");
-    resetButton.classList.add("btn");
+    resetButton.classList.add("reset-button", "btn");
     resetButton.textContent = "Restart";
+
+    buttons.forEach((button) => {
+      button.disabled = true;
+      console.log('lemoney sucks')
+    });
 
     resetButtonWrapper.appendChild(resetButton);
     resetButton.addEventListener("click", () => {
       playerSelection = "";
       playerWinCount = 0;
       computerWinCount = 0;
+
+      buttons.forEach((button) => {
+        button.disabled = false;
+        console.log('lemoney sucks')
+      });
 
       domPlayerWins.textContent = playerWinCount;
 
