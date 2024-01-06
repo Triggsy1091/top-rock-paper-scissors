@@ -107,6 +107,17 @@ button {
   font-weight: bold;
 }
 
+.footer {
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-text {
+  align-self: flex-end;
+}
+
 @media only screen and (max-width: 600px) {
 
   .btn {
